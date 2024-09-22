@@ -1,0 +1,105 @@
+MANUAL FOR MYSHELL
+
+NAME
+        myshell
+
+SYNOPSIS
+	myshell [command | file]
+
+DESCRIPTION
+        myshell serves as an interpreter for command language, processing commands from either a file or standard input
+
+USAGE
+        Run the command make. Followed by the command ./myshell
+
+SHELL BUILTIN COMMANDS 
+        myshell is equipped with a number of built-in commands. 
+        When a user inputs a command, myshell first checks if it corresponds to one of these built-in commands. 
+        If a match is found, the corresponding command is executed. 
+        Any other input is treated as a program invocation.
+
+ARGUMENTS
+        The first parameter, if any, is taken to be the name of a file containing shell commands. 
+        After reading and executing commands from this file, the shell will close. 
+        Initially, an attempt is to open the file is made in the current directory; 
+        If the file cannot be located, the shell exits with a status of 1. 
+        The exit status is zero if every command is carried out correctly.
+
+INVOCATION
+        If no arguments are given, an interactive shell is launched. 
+        The user is presented with a prompt that displays their current working directory and allows them to enter and execute commands.
+
+ENVIRONMENT
+        Environment variables in an operating system are a subset of dynamic variables that hold data that is utilized by apps and processes.
+        Examples of environment variables used by myshell are PATH, which indicates the directories in which the operating system should look for the executable program, and SHELL, which designates the user's default shell.
+        System programs, user-defined scripts, and the operating system all set these variables.
+        'SHELL' is set to the shell path by myShell, and 'PATH' is dynamically updated based on the working directory that is now open.
+
+FUNCTIONS:
+
+        cd [directory] 
+        			Changes the current directory to the one specified as the first argument. 
+                                If the directory doesn’t exist, the user is informed. 
+                                If successful, the return value is 0; otherwise, it’s 1.
+                                If no argument is provided, Myshell outputs the current working directory.
+
+        clr 
+        			Clears the terminal screen.
+
+        dir [directory] 
+        			Displays the contents of the directory specified as the first argument. 
+                                If no arguments are provided, it lists the contents of the current directory.
+
+        environ 
+        			Lists all the current environment variables.
+
+        echo [arg ...] 
+        			Outputs the strings provided as arguments. 
+                                Each argument is printed on a separate line.
+
+        help 
+        			Outputs this manual.
+
+        pause 
+        			Halts the shell’s operation until the Enter key is pressed.
+
+        quit 
+        			Exits the shell with an exit status of 0.
+
+BATCH MODE
+        When the shell is invoked with a command-line argument, it reads input from the specified file.
+        ./myshell batchfile.txt
+
+IO/ REDIRECTION:
+        command > file: This command redirects the output of command to a file. If the file already exists, it is overwritten. If it doesn’t exist, it is created.
+
+        command >> file: This command appends the output of command to a file. If the file doesn’t exist, it is created, and if it does exist, the output is appended to the end of the file.
+
+        command < file: This command takes the contents of file as the input for command. It redirects the input stream of command to come from the contents of the specified file rather than from the terminal.
+
+BACKGROUND AND FOREGROUND EXECUTION
+        There are two types of processes in Myshell: background and foreground.
+        When a user initiates a foreground process, it has terminal access, cannot run in parallel, and must finish before moving on to the next command. On the other hand, background processes, which frequently involve very little user input, allow for simultaneous execution and terminal interaction.
+        When a command is designated as background, users can multitask in Myshell while tasks run in the background by adding an ampersand (&) to the command.
+
+        An example of foreground
+
+                date
+
+        An exmaple of background
+                
+                date &
+
+
+REFERENCES
+        [1]“Creating a Process (The GNU C Library),” www.gnu.org. https://www.gnu.org/software/libc/manual/html_node/Creating-a-Process.html [Accessed 27/02/2024]
+        [2]"Documentation of chdir in the <unistd.h> header file,".https://pubs.opengroup.org/onlinepubs/7908799/xsh/chdir.html [Accessed 02/03/2024]
+        [3]"Environmental Access",https://www.gnu.org/software/libc/manual/html_node/Environment-Access.html [Accessed 25/02/2024]
+        [4]"Guide to code a simple shell in C",https://medium.com/@winfrednginakilonzo/guide-to-code-a-simple-shell-in-c-bd4a3a4c41cd"[Accessed 17/02/2024]
+        [5]I/O redirection ; Oualline, S. (1997). Practical C programming.[Accessed 7/03/2024]
+
+
+ANTI-PLAGARIAM POLICY
+	Kaushal Sambhe 22388443
+	 
+	I declare that this material, which I now submit for assessment, is entirely my own work and has not been taken from the work of others save and to the extent that such work has been cited and acknowledged within the text of my work.
